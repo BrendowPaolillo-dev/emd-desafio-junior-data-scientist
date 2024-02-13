@@ -220,13 +220,6 @@ sendo 241 no Carnaval, 137 no Reveillon, 834 no Rock in Rio */
 --          Questão 9
 -- Qual evento teve a maior média diária de chamados abertos desse subtipo?
 
-SELECT AVG(COUNT(ch.id_chamado))
-FROM datario.administracao_servicos_publicos.chamado_1746 AS ch
-INNER JOIN datario.turismo_fluxo_visitantes.rede_hoteleira_ocupacao_eventos AS rh ON DATE (ch.data_inicio) >= DATE (rh.data_inicial)
-  AND DATE (ch.data_inicio) <= DATE (rh.data_final)
-WHERE ch.subtipo = 'Perturbação do sossego'
-GROUP BY rh.evento
-
 SELECT evento, AVG(contagem_chamados) AS media_diaria_chamados
 FROM (
     SELECT rh.evento, 
@@ -238,7 +231,7 @@ FROM (
     WHERE ch.subtipo = 'Perturbação do sossego'
     GROUP BY rh.evento, rh.data_inicial, rh.data_final
 ) AS eventos_chamados
-GROUP BY evento;
+GROUP BY evento
 LIMIT 1;
 
 /* RESPOSTA: A maior média diária é de 119.5 chamados com o subtipo "Perturbação do sossego" durante o Rock in Rio */
@@ -283,7 +276,7 @@ SELECT 'Rock in Rio' AS evento, media_diaria_evento, NULL FROM media_eventos WHE
 UNION ALL
 SELECT 'Total' AS evento, NULL, media_diaria_total FROM media_total;
 
-/* RESPOSTA: Eventos possuem uma média diária de chamados de:
+/* RESPOSTA: Os eventos possuem uma média diária de chamados de:
         Evento    | Média 
     ------------------------
       Rock in Rio | 119.5
