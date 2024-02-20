@@ -1,4 +1,5 @@
 -- Localização de chamados do 1746
+-- Autor: Brendow Paolillo Castro Isidoro
 
 --------------------------------------------------------------------------
 --          Questão 1
@@ -65,7 +66,7 @@ ORDER BY
 -- Quais os nomes dos 3 bairros que mais tiveram chamados abertos nesse dia?
 
 /* Este problema é possível de ser resolvido de várias formas,
- irei demonstrar duas distintas, uma com aninhamento de consultas e outra com JOIN */
+ irei demonstrar duas métodos distintos, um com aninhamento de consultas e outro com JOIN */
 
 /* Aninhamento */
 SELECT 
@@ -173,8 +174,8 @@ Após executar a consulta, foi encontrado o seguinte dado:
     }]
 
 RESPOSTA: Avaliando o resultado, pode-se inferir que o chamado não se encontra vinculado a um bairro
-ou subprefeitura, pois trata-se de um registro de um veículo (Ônibus) da frota Municipal, na qual tem como valor
-de subtipo: "Verificação de ar condicionado inoperante no ônibus".
+ou subprefeitura, pois trata-se de um registro de um veículo (Ônibus) da frota municipal, pois tem como valor
+de "subtipo": "Verificação de ar condicionado inoperante no ônibus".
 */
 
 --------------------------------------------------------------------------
@@ -283,5 +284,5 @@ SELECT 'Total' AS evento, NULL, media_diaria_total FROM media_total;
       Carnaval    | 60.25
       Reveillon   | 45.6
   
-  Já a média diária de chamados durante todo o período de 01/01/2022 até 31/12/2023 é de: 58.093150684931508
+  Já a média diária de chamados durante todo o período de 01/01/2022 até 31/12/2023 é de: 58.09
 */
